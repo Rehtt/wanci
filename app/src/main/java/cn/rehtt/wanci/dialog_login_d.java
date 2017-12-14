@@ -108,6 +108,7 @@ public class dialog_login_d extends Dialog {
                 }else Snackbar.make(imageView6,"登陆失败",Snackbar.LENGTH_LONG).show();
 
 
+
             }
         });
 
