@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="844px"
+    android:layout_height="756px"
+    android:background="@drawable/login_d_background"
+    android:minHeight="250dp">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="237dp"
+        android:layout_height="43dp"
+
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="68dp"
+        android:hint="请输入用户名"
+        android:inputType="textPersonName"
+        android:textColorLink="@android:color/background_light"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="370dp"
+        android:layout_height="38dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="login_D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="322dp"
+        android:layout_height="42dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="61dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.921"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/login_d_zhu"
+        android:onClick="login_Z"/>
+</android.support.constraint.ConstraintLayout>
+
+
+
+

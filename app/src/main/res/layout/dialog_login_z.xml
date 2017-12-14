@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="838px"
+    android:layout_height="1018px"
+    android:background="@drawable/login_z_background">
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:ems="10"
+        android:hint="请输入用户名"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="244dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="请输入手机号"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="244dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="142dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="请输入验证码"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="276px"
+        android:layout_height="82px"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="13dp"
+        app:layout_constraintStart_toEndOf="@+id/editText6"
+        app:layout_constraintTop_toBottomOf="@+id/editText5"
+        app:srcCompat="@drawable/login_z_y" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="740px"
+        android:layout_height="84px"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText6"
+        app:srcCompat="@drawable/login_z_z" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="179px"
+        android:layout_height="51px"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:srcCompat="@drawable/login_z_d" />
+</android.support.constraint.ConstraintLayout>
+
