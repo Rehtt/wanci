@@ -44,7 +44,7 @@ public class pve_1 extends AppCompatActivity {
     TextView textViewP;
     TextView textViewR;
     ImageView imageView;
-    private static int severalTimes =1;
+    private static int severalTimes =1;     //记录测试
     Context context;
 
     String word_r="";       //装载单词对比结果，错误为0，正确为1。eg: word_r="apple , 0 , word , 1"
