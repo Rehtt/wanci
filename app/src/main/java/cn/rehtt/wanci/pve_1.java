@@ -302,16 +302,27 @@ public class pve_1 extends AppCompatActivity {
                 if (!b) {
                     Log.i("讯飞识别的结果", recognizerResult.getResultString());
                     final String result = parseVoice(recognizerResult.getResultString());
-                    recordresult=result;
+
+                    byte[] bytes;
+                    bytes=result.getBytes();
+                    for (int q=0;q<bytes.length;q++){
+                        if (bytes[q]>64&&bytes[q]<91){
+                            bytes[q]+=32;
+                            System.out.println(bytes[q]);
+                        }
+                    }
+
+                    final String as=new String(bytes);
+
+                    recordresult=as;
                     gamepro();
                    // result0[0] =result;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            textView2.setText(result);
+                            textView2.setText(recordresult);
                         }
                     });
-                    Log.e("99999999",result);
                 }
             }
 
