@@ -33,8 +33,10 @@ import java.util.Date;
 import cn.rehtt.wanci.R;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class pve_1 extends AppCompatActivity {
@@ -285,22 +287,25 @@ public class pve_1 extends AppCompatActivity {
                 JSONObject b =new JSONObject();
                 try {
                     b.put("word",word_r_toArray[i]);
-                    b.put("state",word_r_toArray[++i]);
+                    b.put("state",Integer.parseInt(word_r_toArray[++i]));
                     jsonArray.put(b);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
+
             }
             JSONObject maind = new JSONObject();
             try {
-                maind.put("user","test");
-                maind.put("data",jsonArray);
+                maind.put("user","zxc");
+                maind.put("date","'"+jsonArray);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             Log.e("wqwq",maind.toString());
+
+//            returnJsonToServer(maind);
 
             //打开开始按钮
             imageView.setVisibility(View.GONE);
@@ -414,6 +419,15 @@ public class pve_1 extends AppCompatActivity {
         }
     };
 
+    private void returnJsonToServer (JSONObject jsonObject){
+        String url = "http://yellow948.cn/wanciwang/updateNote.php";
+        OkHttpClient okHttpClient = new OkHttpClient();
+        MediaType JSON = MediaType.parse("application/json;charset=utf-8");
+        RequestBody body =RequestBody.create(JSON,jsonObject.toString());
+        Request request = new Request.Builder().url(url).build();
+
+
+    }
 
 
 
