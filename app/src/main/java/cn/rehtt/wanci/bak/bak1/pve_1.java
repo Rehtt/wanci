@@ -1,10 +1,7 @@
-package cn.rehtt.wanci;
+package cn.rehtt.wanci.bak.bak1;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -42,15 +39,14 @@ public class pve_1 extends AppCompatActivity {
     TextView textViewP;
     TextView textViewR;
     ImageView imageView;
-    private static int severalTimes =1;     //记录测试
+    private static int severalTimes =1;
     Context context;
 
-    String word_r="";       //装载单词对比结果，错误为0，正确为1。eg: word_r="apple , 0 , word , 1"
+    private String recordresult="";
+    int blood=5;
+    int robotBlood=5;
+    long starttime;
 
-    private String recordresult="";       //语音识别结果
-    int blood=5;              //初始玩家血量
-    int robotBlood=5;         // 初始电脑血量
-    long starttime;           //时间
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +63,6 @@ public class pve_1 extends AppCompatActivity {
         imageView=(ImageView)findViewById(R.id.imageView16);
         context=this;
         getWord();
-        handler.sendEmptyMessage(1);         //显示获取词库
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,15 +70,15 @@ public class pve_1 extends AppCompatActivity {
 
                 imageView.setVisibility(View.GONE);
                 textView.setVisibility(View.VISIBLE);
-                // String a =word[severalTimes];
+               // String a =word[severalTimes];
 
 //                textView.setText(a);
-                // severalTimes++;
-                //   Toast.makeText(context,"dianji kaishi",Toast.LENGTH_LONG).show();
-                //  textView.setText(a);
+               // severalTimes++;
+             //   Toast.makeText(context,"dianji kaishi",Toast.LENGTH_LONG).show();
+              //  textView.setText(a);
                 show();
-                // textView.setText(a);
-                //  while(blood!=0&&robotBlood!=0){
+               // textView.setText(a);
+              //  while(blood!=0&&robotBlood!=0){
 
 
 
@@ -92,8 +87,8 @@ public class pve_1 extends AppCompatActivity {
 
 
 
-                //  }
-                //  SpeechMode();
+              //  }
+              //  SpeechMode();
 
 
 //                game.main();
@@ -105,29 +100,26 @@ public class pve_1 extends AppCompatActivity {
 
     }
 
-
+    OkHttpClient okHttpClient= new OkHttpClient();
     private void getWord(){
-        OkHttpClient okHttpClient= new OkHttpClient();
         String url="http://yellow948.cn/wanciwang/getSomeWord.php";
         Request request = new Request.Builder().url(url).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("getWord()","no");
-                Log.e("getWord()",e.getLocalizedMessage());
+
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
                 String res = response.body().string();
+
                 jsonToArray(res);
-                handler.sendEmptyMessage(0);    //关闭获取词库框
-                Log.e("getWord()",res);
+                Log.e("dsd",res);
             }
         });
-
     }
     private void jsonToArray(String res){
 
@@ -139,7 +131,7 @@ public class pve_1 extends AppCompatActivity {
 
             }
 //            show();
-            //          textViw.setText("iiiiiiii");
+  //          textViw.setText("iiiiiiii");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -153,14 +145,14 @@ public class pve_1 extends AppCompatActivity {
         Toast.makeText(context,"kaishixianshi",Toast.LENGTH_LONG).show();
         //final String  a =word[severalTimes];
 
-        // 显示
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                textView.setText(word[severalTimes]);
+       // 显示
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView.setText(word[severalTimes]);
 
-            }
-        });
+                        }
+                    });
 
         starttime=new Date().getTime();
 //        new Thread(new Runnable() {
@@ -186,14 +178,14 @@ public class pve_1 extends AppCompatActivity {
 
 
 
-        //计时
-        //     SimpleDateFormat sdf= new   SimpleDateFormat("hhmmss");
-        //String starDate1 = sdf.format(new Date());//获取游戏开始时间
-        //System.out.println("开始时间:"+starDate1);
+                    //计时
+               //     SimpleDateFormat sdf= new   SimpleDateFormat("hhmmss");
+                    //String starDate1 = sdf.format(new Date());//获取游戏开始时间
+                    //System.out.println("开始时间:"+starDate1);
 
 //			System.out.println(Integer.parseInt(starDate1));
-        //       long starDate2=new Date().getTime();
-        //      long end=starDate2;
+             //       long starDate2=new Date().getTime();
+              //      long end=starDate2;
 
 
 //
@@ -254,32 +246,28 @@ public class pve_1 extends AppCompatActivity {
 
         long endtime=new Date().getTime();
 
-        //  if(endtime-starttime<5000) {
+      //  if(endtime-starttime<5000) {
 
-        if (recordresult.equals(word[severalTimes])) {
-            word_r = word_r + "," + word[severalTimes++] + ",1";
-            robotBlood--;
+            if (recordresult.equals(word[severalTimes++])) {
+                robotBlood--;
 
-        }else
-        {
-            word_r = word_r + "," + word[severalTimes++] + ",0";
-            blood--;
-        }
+            }else
+            {
+                blood--;
+            }
 
         showBlood(blood,robotBlood);
         imageView.setVisibility(View.VISIBLE);
 
-
         if(blood==0){
             //弹出比赛结果
             Toast.makeText(context,"显示比赛结果",Toast.LENGTH_LONG).show();
-            Log.e("wqwq",word_r);
             //打开开始按钮
             imageView.setVisibility(View.GONE);
         }
-        //
-        //       blood--;
-        //    }
+    //
+     //       blood--;
+    //    }
 
 
     }
@@ -299,7 +287,7 @@ public class pve_1 extends AppCompatActivity {
     }
 
     public void SpeechMode(){
-        // final String[] result0 = {""};
+       // final String[] result0 = {""};
         SpeechUtility.createUtility(context, SpeechConstant.APPID +"=59e45c55");
         RecognizerDialog recognizerDialog = new RecognizerDialog(context,null);
         recognizerDialog.setParameter(SpeechConstant.LANGUAGE,"en_us");
@@ -323,7 +311,7 @@ public class pve_1 extends AppCompatActivity {
 
                     recordresult=as;
                     gamepro();
-                    // result0[0] =result;
+                   // result0[0] =result;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -339,7 +327,7 @@ public class pve_1 extends AppCompatActivity {
             }
         });
         recognizerDialog.show();
-        //   return result0[0];
+     //   return result0[0];
     }
 
     public String parseVoice(String resultString) {
@@ -370,23 +358,6 @@ public class pve_1 extends AppCompatActivity {
             public String w;
         }
     }
-
-    //显示正在获取词库对话框
-    ProgressDialog progressDialog=null;
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message message){
-            switch (message.what){
-                case 1:
-                    progressDialog = ProgressDialog.show(context,"","正在获取词库，请稍后");
-                    break;
-                case 0:
-                    progressDialog.dismiss();
-            }
-        }
-    };
-
-
 
 
 

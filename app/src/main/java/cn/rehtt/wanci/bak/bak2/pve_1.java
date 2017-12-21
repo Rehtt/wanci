@@ -1,4 +1,4 @@
-package cn.rehtt.wanci.bak;
+package cn.rehtt.wanci.bak.bak2;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -39,13 +39,15 @@ public class pve_1 extends AppCompatActivity {
     TextView textViewP;
     TextView textViewR;
     ImageView imageView;
-    private static int severalTimes =1;
+    private static int severalTimes =1;     //记录测试
     Context context;
 
-    private String recordresult="";
-    int blood=5;
-    int robotBlood=5;
-    long starttime;
+    String word_r="";       //装载单词对比结果，错误为0，正确为1。eg: word_r="apple , 0 , word , 1"
+
+    private String recordresult="";       //语音识别结果
+    int blood=5;              //初始玩家血量
+    int robotBlood=5;         // 初始电脑血量
+    long starttime;           //时间
 
 
     @Override
@@ -248,20 +250,24 @@ public class pve_1 extends AppCompatActivity {
 
       //  if(endtime-starttime<5000) {
 
-            if (recordresult.equals(word[severalTimes++])) {
+            if (recordresult.equals(word[severalTimes])) {
+                word_r = word_r + "," + word[severalTimes++] + ",1";
                 robotBlood--;
 
             }else
             {
+                word_r = word_r + "," + word[severalTimes++] + ",0";
                 blood--;
             }
 
         showBlood(blood,robotBlood);
         imageView.setVisibility(View.VISIBLE);
 
+
         if(blood==0){
             //弹出比赛结果
             Toast.makeText(context,"显示比赛结果",Toast.LENGTH_LONG).show();
+            Log.e("wqwq",word_r);
             //打开开始按钮
             imageView.setVisibility(View.GONE);
         }
