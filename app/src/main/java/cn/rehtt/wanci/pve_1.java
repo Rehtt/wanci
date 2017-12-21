@@ -21,6 +21,8 @@ import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -274,6 +276,32 @@ public class pve_1 extends AppCompatActivity {
             //弹出比赛结果
             Toast.makeText(context,"显示比赛结果",Toast.LENGTH_LONG).show();
             Log.e("wqwq",word_r);
+
+            String[] word_r_toArray;
+            word_r_toArray=word_r.split(",");
+
+            JSONArray jsonArray = new JSONArray();
+            for(int i=1;i<word_r_toArray.length;i++){
+                JSONObject b =new JSONObject();
+                try {
+                    b.put("word",word_r_toArray[i]);
+                    b.put("state",word_r_toArray[++i]);
+                    jsonArray.put(b);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+            JSONObject maind = new JSONObject();
+            try {
+                maind.put("user","test");
+                maind.put("data",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.e("wqwq",maind.toString());
+
             //打开开始按钮
             imageView.setVisibility(View.GONE);
         }
