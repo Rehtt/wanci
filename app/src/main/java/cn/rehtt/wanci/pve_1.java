@@ -424,7 +424,19 @@ public class pve_1 extends AppCompatActivity {
         OkHttpClient okHttpClient = new OkHttpClient();
         MediaType JSON = MediaType.parse("application/json;charset=utf-8");
         RequestBody body =RequestBody.create(JSON,jsonObject.toString());
-        Request request = new Request.Builder().url(url).build();
+        Request request = new Request.Builder().url(url).post(body).build();
+        Call call =okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
 
 
     }
