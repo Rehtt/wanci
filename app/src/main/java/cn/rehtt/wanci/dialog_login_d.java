@@ -53,6 +53,8 @@ public class dialog_login_d extends Dialog {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_login_d);
+        setCanceledOnTouchOutside(false);          //设置点击空白处不消失
+        setCancelable(false);                      ////设置点击返回键不消失
         login_d_y=(EditText)findViewById(R.id.editText);
         login_d_m=(EditText)findViewById(R.id.editText3);
         imageView6=(ImageView)findViewById(R.id.imageView6);

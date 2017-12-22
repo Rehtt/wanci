@@ -33,6 +33,7 @@ import java.util.Date;
 import cn.rehtt.wanci.R;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -85,6 +86,7 @@ public class pve_1 extends AppCompatActivity {
                 // severalTimes++;
                 //   Toast.makeText(context,"dianji kaishi",Toast.LENGTH_LONG).show();
                 //  textView.setText(a);
+                for(int i=0;i<5;i++)
                 show();
                 // textView.setText(a);
                 //  while(blood!=0&&robotBlood!=0){
@@ -180,8 +182,16 @@ public class pve_1 extends AppCompatActivity {
 //            }
 //        }).start();
 
-        SpeechMode ();
-
+//        SpeechMode ();
+        recordresult="as";
+        gamepro();
+        // result0[0] =result;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                textView2.setText(recordresult);
+            }
+        });
 
 
 
@@ -292,23 +302,20 @@ public class pve_1 extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
-
             }
             JSONObject maind = new JSONObject();
             try {
-                maind.put("user","zxc");
-                maind.put("date","'"+jsonArray);
+                maind.put("user","asd");
+                maind.put("date",jsonArray);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             Log.e("wqwq",maind.toString());
 
-//            returnJsonToServer(maind);
+            returnJsonToServer(maind);
 
             //打开开始按钮
-            imageView.setVisibility(View.GONE);
+//            imageView.setVisibility(View.GONE);
         }
         //
         //       blood--;
@@ -420,21 +427,29 @@ public class pve_1 extends AppCompatActivity {
     };
 
     private void returnJsonToServer (JSONObject jsonObject){
+
         String url = "http://yellow948.cn/wanciwang/updateNote.php";
         OkHttpClient okHttpClient = new OkHttpClient();
-        MediaType JSON = MediaType.parse("application/json;charset=utf-8");
-        RequestBody body =RequestBody.create(JSON,jsonObject.toString());
+        RequestBody body = null ;
+        try {
+            body = new FormBody.Builder()
+                    .add("user",jsonObject.getString("user"))
+                    .add("date",jsonObject.getString("date"))
+                    .build();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         Request request = new Request.Builder().url(url).post(body).build();
         Call call =okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.e("wqwq","onF"+e.getLocalizedMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                Log.e("wqwq","onR"+response.body().string());
             }
         });
 
