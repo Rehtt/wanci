@@ -51,7 +51,7 @@ public class dialog_login_z extends Dialog{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_login_z);
         setCanceledOnTouchOutside(false);          //设置点击空白处不消失
-        setCancelable(false);                      ////设置点击返回键不消失
+//        setCancelable(false);                      ////设置点击返回键不消失
 
         login_z_user=(EditText)findViewById(R.id.editText2);
         login_z_password=(EditText)findViewById(R.id.editText5);

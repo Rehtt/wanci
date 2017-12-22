@@ -3,9 +3,12 @@ package cn.rehtt.wanci;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -54,7 +57,7 @@ public class dialog_login_d extends Dialog {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_login_d);
         setCanceledOnTouchOutside(false);          //设置点击空白处不消失
-        setCancelable(false);                      ////设置点击返回键不消失
+        setCancelable(false);                      //设置点击返回键不消失
         login_d_y=(EditText)findViewById(R.id.editText);
         login_d_m=(EditText)findViewById(R.id.editText3);
         imageView6=(ImageView)findViewById(R.id.imageView6);
@@ -114,5 +117,33 @@ public class dialog_login_d extends Dialog {
             }
         });
 
+    }
+
+    //双击退出
+    private static  boolean isExit = false;
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
+    @Override
+    public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            exit();
+            return  false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    private void exit(){
+        if (!isExit){
+            isExit = true;
+            Snackbar.make(imageView6,"再按一次退出",Snackbar.LENGTH_LONG).show();
+            handler.sendEmptyMessageDelayed(0,2000);
+        }
+        else {
+            System.exit(0);
+        }
     }
 }
