@@ -17,7 +17,7 @@ import net.sf.json.JSONObject;
 
 public class Game {
     public  void main() {
-        String url="http://yellow948.cn/wanciwang/getSomeWord.php";//单词接口
+        String url="https://wanci.rehtt.cn/wanciwang/getSomeWord.php";//单词接口
         String json=loadJSON(url);//获得15单词
 
         JSONObject js=JSONObject.fromObject(json);//转化为json对象

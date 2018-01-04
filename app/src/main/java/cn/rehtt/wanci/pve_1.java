@@ -114,7 +114,7 @@ public class pve_1 extends AppCompatActivity {
 
     private void getWord(){
         OkHttpClient okHttpClient= new OkHttpClient();
-        String url="http://yellow948.cn/wanciwang/getSomeWord.php";
+        String url="https://wanci.rehtt.cn/wanciwang/getSomeWord.php";
         Request request = new Request.Builder().url(url).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
