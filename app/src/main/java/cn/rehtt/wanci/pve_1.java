@@ -86,7 +86,6 @@ public class pve_1 extends AppCompatActivity {
                 // severalTimes++;
                 //   Toast.makeText(context,"dianji kaishi",Toast.LENGTH_LONG).show();
                 //  textView.setText(a);
-                for(int i=0;i<5;i++)
                 show();
                 // textView.setText(a);
                 //  while(blood!=0&&robotBlood!=0){
@@ -99,7 +98,7 @@ public class pve_1 extends AppCompatActivity {
 
 
                 //  }
-                //  SpeechMode();
+//                  SpeechMode();
 
 
 //                game.main();
@@ -182,18 +181,8 @@ public class pve_1 extends AppCompatActivity {
 //            }
 //        }).start();
 
-//        SpeechMode ();
-        recordresult="as";
-        gamepro();
-        // result0[0] =result;
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                textView2.setText(recordresult);
-            }
-        });
-
-
+        SpeechMode ();
+//        recordresult="as";
 
 
         //      while(blood!=0&&robotBlood!=0){
@@ -305,7 +294,7 @@ public class pve_1 extends AppCompatActivity {
             }
             JSONObject maind = new JSONObject();
             try {
-                maind.put("user","asd");
+                maind.put("user",new DataSave().getUserName());
                 maind.put("date",jsonArray);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -315,7 +304,7 @@ public class pve_1 extends AppCompatActivity {
             returnJsonToServer(maind);
 
             //打开开始按钮
-//            imageView.setVisibility(View.GONE);
+            imageView.setVisibility(View.GONE);
         }
         //
         //       blood--;

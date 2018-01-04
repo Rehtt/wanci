@@ -75,7 +75,7 @@ public class dialog_login_d extends Dialog {
 
 
     OkHttpClient okHttpClient = new OkHttpClient();
-    public void Login_D(String name,String password){
+    public void Login_D(final String name, String password){
 
         String path="http://wanci.rehtt.cn/wanciwang/login.php";
         RequestBody body = new FormBody.Builder()
@@ -97,6 +97,7 @@ public class dialog_login_d extends Dialog {
             public void onResponse(Call call, Response response) throws IOException {
 
                 String ress = response.body().string();
+                Log.e("qqqqqqq",ress);
 
                 Gson gson = new Gson();
                 json_jie data = gson.fromJson(ress,json_jie.class);
@@ -105,6 +106,7 @@ public class dialog_login_d extends Dialog {
                 
                 if (data.getData().equals("500")) {
                     dismiss();
+                    new DataSave().setUserName(name);
 //                    Snackbar.make(imageView6, "登陆成功", Snackbar.LENGTH_LONG).setAction("开始畅玩", new View.OnClickListener() {
 //                        @Override
 //                        public void onClick(View view) {

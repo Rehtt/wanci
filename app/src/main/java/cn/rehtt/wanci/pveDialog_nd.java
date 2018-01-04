@@ -33,7 +33,7 @@ public class pveDialog_nd extends Dialog {
                 Intent intent =new Intent();
                 intent.setClass(mcontext,pve_1.class);
                 mcontext.startActivity(intent);
-                ((Activity)mcontext).finish();
+//                ((Activity)mcontext).finish();
             }
         });
     }
