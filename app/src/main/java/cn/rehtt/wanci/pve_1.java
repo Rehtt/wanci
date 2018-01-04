@@ -114,7 +114,7 @@ public class pve_1 extends AppCompatActivity {
 
     private void getWord(){
         OkHttpClient okHttpClient= new OkHttpClient();
-        String url="https://wanci.rehtt.cn/wanciwang/getSomeWord.php";
+        String url="http://wanci.rehtt.cn/wanciwang/getSomeWord.php";
         Request request = new Request.Builder().url(url).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
@@ -428,7 +428,7 @@ public class pve_1 extends AppCompatActivity {
 
     private void returnJsonToServer (JSONObject jsonObject){
 
-        String url = "http://yellow948.cn/wanciwang/updateNote.php";
+        String url = "http://wanci.rehtt.cn/wanciwang/updateNote.php";
         OkHttpClient okHttpClient = new OkHttpClient();
         RequestBody body = null ;
         try {

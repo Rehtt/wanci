@@ -61,7 +61,7 @@ public class dialog_login_z extends Dialog{
         imageView_z.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String path="https://wanci.rehtt.cn/wanciwang/register.php";
+                String path="http://wanci.rehtt.cn/wanciwang/register.php";
                 RequestBody body = new FormBody.Builder()
                         .add("name",login_z_user.getText().toString())
                         .add("password",login_z_password.getText().toString())

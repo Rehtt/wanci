@@ -77,7 +77,7 @@ public class dialog_login_d extends Dialog {
     OkHttpClient okHttpClient = new OkHttpClient();
     public void Login_D(String name,String password){
 
-        String path="https://wanci.rehtt.cn/wanciwang/login.php";
+        String path="http://wanci.rehtt.cn/wanciwang/login.php";
         RequestBody body = new FormBody.Builder()
                 .add("name",name)
                 .add("password",password)
