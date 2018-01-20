@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         dialog_login_d d=new dialog_login_d(this);
         d.show();
+
     }
     public void login_D(View view){
 
@@ -44,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     public void login_Z(View view){
         dialog_login_z d = new dialog_login_z(this);
         d.show();
-
     }
 
 

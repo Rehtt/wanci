@@ -30,11 +30,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import cn.rehtt.wanci.R;
+import cn.rehtt.wanci.bak.DataSave;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -356,7 +355,7 @@ public class pve_1 extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            textView2.setText(recordresult);
+                            textView2.setText("请读出："+recordresult);
                         }
                     });
                 }
